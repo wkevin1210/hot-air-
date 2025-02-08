@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cio6v25pe4cn7"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_bwwpn"]
-[ext_resource type="PackedScene" uid="uid://bnlmq3lqenbtw" path="res://Plane.tscn" id="2_tj7c7"]
+[ext_resource type="PackedScene" uid="uid://bnlmq3lqenbtw" path="res://Scenes/Plane.tscn" id="2_tj7c7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nobst"]
 size = Vector3(0.538769, 0.278442, 3.99017)
@@ -9,7 +9,9 @@ size = Vector3(0.538769, 0.278442, 3.99017)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0nji"]
 size = Vector3(0.747253, 0.0384979, 5.14319)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_bwwpn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -21,4 +23,4 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0010
 shape = SubResource("BoxShape3D_l0nji")
 
 [node name="Plane" parent="." instance=ExtResource("2_tj7c7")]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.549725, 0)
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.583756, 0)

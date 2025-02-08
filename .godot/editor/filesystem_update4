@@ -1,6 +1,9 @@
-res://Scenes/game.tscn
 res://Scenes/player.tscn
+res://Scenes/game.tscn
 res://Scenes/checkpoint.tscn
 res://Scenes/Plane.tscn
-res://Plane.tscn
-res://Scripts/arrow.gd
+res://Balloon.tscn
+res://test_Scene.tscn
+res://Cloud.tscn
+res://Clouds.tscn
+res://Scenes/spawner.gd
