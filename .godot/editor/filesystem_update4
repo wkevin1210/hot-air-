@@ -1,0 +1,5 @@
+res://Scenes/game.tscn
+res://Scripts/checkpoint.gd
+res://Scripts/game.gd
+res://Scenes/player.tscn
+res://Scenes/checkpoint.tscn
