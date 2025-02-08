@@ -1,6 +1,7 @@
+Node3D
+Control
 CollisionShape3D
 CanvasLayer
-Node3D
 DirectionalLight3D
 MeshInstance3D
 Area3D

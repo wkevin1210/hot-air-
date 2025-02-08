@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 
 func _physics_process(_delta: float) -> void:
 	var checkpoints = get_tree().get_nodes_in_group("Checkpoints")

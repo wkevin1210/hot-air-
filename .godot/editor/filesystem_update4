@@ -1,5 +1,6 @@
-res://Scenes/player.tscn
 res://Scenes/game.tscn
+res://Scenes/player.tscn
 res://Scenes/checkpoint.tscn
-res://Scripts/Plane.tscn
+res://Scenes/Plane.tscn
 res://Plane.tscn
+res://Scripts/arrow.gd

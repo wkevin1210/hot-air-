@@ -9,8 +9,8 @@ albedo_color = Color(0, 0.913725, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wuotu"]
 margin = 1.255
-radius = 1.00258
-height = 2.03158
+radius = 1.42956
+height = 2.85912
 
 [node name="Checkpoint" type="Area3D"]
 script = ExtResource("1_x6q72")

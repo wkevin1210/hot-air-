@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
 [ext_resource type="PackedScene" uid="uid://br53goriq0rx8" path="res://Scenes/checkpoint.tscn" id="2_e4fhv"]
-[ext_resource type="Script" path="res://Scripts/direction_arrow.gd" id="3_wam52"]
+[ext_resource type="Script" path="res://Scripts/arrow.gd" id="3_8hhod"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,7 +18,8 @@ sky = SubResource("Sky_wig8d")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PrismMesh" id="PrismMesh_mle6q"]
+[sub_resource type="PrismMesh" id="PrismMesh_xfy1m"]
+lightmap_size_hint = Vector2i(14, 21)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5hcj"]
 albedo_color = Color(0, 1, 0.333333, 1)
@@ -35,12 +36,17 @@ unique_name_in_owner = true
 [node name="PlayerCam" type="Camera3D" parent="Player"]
 transform = Transform3D(1, -4.29512e-09, -1.03969e-09, 4.41352e-09, 0.958795, 0.284099, -2.23387e-10, -0.284099, 0.958795, 0, 4.26058, 7.8874)
 
-[node name="DirectionArrow" type="MeshInstance3D" parent="Player/PlayerCam"]
-transform = Transform3D(0.5, 2.20676e-09, -1.92113e-11, -2.14756e-09, 0.479397, -0.0244325, -5.19847e-10, 0.142049, 0.0824564, 4.30714e-09, 2.34437, -5.54221)
-mesh = SubResource("PrismMesh_mle6q")
+[node name="Arrow" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85926, 2.30622)
+script = ExtResource("3_8hhod")
+
+[node name="DirectionArrow" type="MeshInstance3D" parent="Player/Arrow"]
+transform = Transform3D(0.405315, 0, 0, 0, -3.39252e-08, 0.122083, 0, -0.776118, -5.33642e-09, 0, 0, 0)
+rotation_order = 0
+transparency = 0.5
+mesh = SubResource("PrismMesh_xfy1m")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_s5hcj")
-script = ExtResource("3_wam52")
 
 [node name="Checkpoint" parent="." groups=["Checkpoints"] instance=ExtResource("2_e4fhv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0894365, 0.0670133, -19.3135)
