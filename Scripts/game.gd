@@ -13,5 +13,5 @@ func spawn_checkpoint():
 	checkpoint.spawn()
 
 func _on_checkpoint_collected() -> void:
-
+	
 	call_deferred("spawn_checkpoint")

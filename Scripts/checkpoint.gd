@@ -21,7 +21,8 @@ func spawn():
 	global_position.z = player.global_position.z + offsets[2]
 	
 signal collected
-func _on_body_entered(_body: Node3D) -> void:
-	collected.emit()
-
-	await queue_free()
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		collected.emit()
+		body.add_point()
+		await queue_free()

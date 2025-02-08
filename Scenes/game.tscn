@@ -44,6 +44,7 @@ balloon = ExtResource("5_33y6m")
 
 [node name="Timer" type="Timer" parent="Targetted Spawner"]
 unique_name_in_owner = true
+wait_time = 0.5
 autostart = true
 
 [node name="Holder" type="Node3D" parent="."]

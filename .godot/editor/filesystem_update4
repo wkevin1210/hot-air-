@@ -2,10 +2,10 @@ res://Scenes/player.tscn
 res://Scenes/game.tscn
 res://Scenes/checkpoint.tscn
 res://Scenes/Plane.tscn
-res://Balloon.tscn
-res://test_Scene.tscn
-res://Cloud.tscn
-res://Clouds.tscn
 res://Scenes/Balloon.tscn
-res://Scenes/Clouds.tscn
+res://Scenes/test_Scene.tscn
 res://Scenes/Cloud.tscn
+res://Scenes/Clouds.tscn
+res://Scripts/checkpoint.gd
+res://Scripts/game.gd
+res://Scripts/player.gd
