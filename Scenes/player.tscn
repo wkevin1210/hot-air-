@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cio6v25pe4cn7"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_bwwpn"]
-[ext_resource type="PackedScene" uid="uid://bpqyrhkxqhqgk" path="res://Scripts/Plane.tscn" id="2_ija2n"]
+[ext_resource type="PackedScene" uid="uid://bnlmq3lqenbtw" path="res://Plane.tscn" id="2_tj7c7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nobst"]
 size = Vector3(0.538769, 0.278442, 3.99017)
@@ -20,5 +20,5 @@ shape = SubResource("BoxShape3D_nobst")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00103855, -0.0101532, -0.0636692)
 shape = SubResource("BoxShape3D_l0nji")
 
-[node name="Plane" parent="." instance=ExtResource("2_ija2n")]
-transform = Transform3D(-1.995, 0, -3.01237e-07, 0, 1.995, 0, 3.01237e-07, 0, -1.995, 0, -0.551379, 0.00579226)
+[node name="Plane" parent="." instance=ExtResource("2_tj7c7")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.549725, 0)
