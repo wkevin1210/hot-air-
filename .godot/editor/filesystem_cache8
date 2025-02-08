@@ -1,14 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738984178
-Plane.glb::PackedScene::7341322853314052419::1738984178::1738984178::1::::<><>::uid://biievso3noi4p::::res://Plane_Cube Base Color.png
-Plane_Cube Base Color.png::CompressedTexture2D::2964727792810596169::1738984178::1738984178::1::::<><>::
-::res://Scenes/::1738982392
-checkpoint.tscn::PackedScene::3643273910696780155::1738982392::0::1::::<><>::res://Scripts/checkpoint.gd
-game.tscn::PackedScene::6031475631473147163::1738982392::0::1::::<><>::uid://cio6v25pe4cn7::::res://Scenes/player.tscn<>res://Scripts/game.gd<>uid://br53goriq0rx8::::res://Scenes/checkpoint.tscn<>res://Scripts/direction_arrow.gd
-player.tscn::PackedScene::5365174598657666922::1738982392::0::1::::<><>::res://Scripts/player.gd<>uid://bpqyrhkxqhqgk::::res://Scripts/Plane.tscn
-::res://Scripts/::1738982392
-checkpoint.gd::GDScript::-1::1738980174::0::1::::<>Area3D<>::
-direction_arrow.gd::GDScript::-1::1738980174::0::1::::<>MeshInstance3D<>::
-game.gd::GDScript::-1::1738980174::0::1::::<>Node3D<>::
-Plane.tscn::PackedScene::3473771332829506734::1738982392::0::1::::<><>::
-player.gd::GDScript::-1::1738980174::0::1::::<>CharacterBody3D<>::
+::res://::1738986212
+Plane.glb::PackedScene::7341322853314052419::1738985058::1738985088::1::::<><>::uid://biievso3noi4p::::res://Plane_Cube Base Color.png
+Plane.tscn::PackedScene::3322342471277333000::1738986212::0::1::::<><>::uid://biievso3noi4p::::res://Plane_Cube Base Color.png
+Plane_Cube Base Color.png::CompressedTexture2D::2964727792810596169::1738985058::1738985088::1::::<><>::
+::res://Scenes/::1738986212
+checkpoint.tscn::PackedScene::3643273910696780155::1738986212::0::1::::<><>::res://Scripts/checkpoint.gd
+game.tscn::PackedScene::6031475631473147163::1738986212::0::1::::<><>::uid://cio6v25pe4cn7::::res://Scenes/player.tscn<>res://Scripts/game.gd<>uid://br53goriq0rx8::::res://Scenes/checkpoint.tscn<>res://Scripts/direction_arrow.gd
+player.tscn::PackedScene::5365174598657666922::1738986212::0::1::::<><>::res://Scripts/player.gd<>uid://bnlmq3lqenbtw::::res://Plane.tscn
+::res://Scripts/::1738986212
+checkpoint.gd::GDScript::-1::1738979236::0::1::::<>Area3D<>::
+direction_arrow.gd::GDScript::-1::1738986074::0::1::::<>MeshInstance3D<>::
+game.gd::GDScript::-1::1738979236::0::1::::<>Node3D<>::
+Plane.tscn::PackedScene::3473771332829506734::1738986212::0::1::::<><>::
+player.gd::GDScript::-1::1738972761::0::1::::<>CharacterBody3D<>::

@@ -3,3 +3,5 @@ res://Scenes/game.tscn
 res://Scenes/checkpoint.tscn
 res://Scripts/Plane.tscn
 res://Plane.tscn
+res://Scripts/direction_arrow.gd
+res://Scenes/Plane.tscn

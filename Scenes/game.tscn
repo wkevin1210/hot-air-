@@ -18,7 +18,8 @@ sky = SubResource("Sky_wig8d")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PrismMesh" id="PrismMesh_mle6q"]
+[sub_resource type="PrismMesh" id="PrismMesh_xfy1m"]
+lightmap_size_hint = Vector2i(14, 21)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5hcj"]
 albedo_color = Color(0, 1, 0.333333, 1)
@@ -35,10 +36,11 @@ unique_name_in_owner = true
 [node name="PlayerCam" type="Camera3D" parent="Player"]
 transform = Transform3D(1, -4.29512e-09, -1.03969e-09, 4.41352e-09, 0.958795, 0.284099, -2.23387e-10, -0.284099, 0.958795, 0, 4.26058, 7.8874)
 
-[node name="DirectionArrow" type="MeshInstance3D" parent="Player/PlayerCam"]
-transform = Transform3D(0.5, 2.20676e-09, -1.92113e-11, -2.14756e-09, 0.479397, -0.0244325, -5.19847e-10, 0.142049, 0.0824564, 4.30714e-09, 2.34437, -5.54221)
-mesh = SubResource("PrismMesh_mle6q")
-skeleton = NodePath("../..")
+[node name="DirectionArrow" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.5, 0, 0, 0, 0.577601, 0, 0, 0, 0.122083, 0, 4.934, 1.883)
+rotation_order = 0
+transparency = 0.5
+mesh = SubResource("PrismMesh_xfy1m")
 surface_material_override/0 = SubResource("StandardMaterial3D_s5hcj")
 script = ExtResource("3_wam52")
 

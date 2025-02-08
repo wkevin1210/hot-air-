@@ -5,4 +5,4 @@ func _physics_process(_delta: float) -> void:
 
 	if checkpoints != []:
 		var target = checkpoints[0]
-		look_at(target.global_position, Vector3.BACK)
+		look_at(target.global_position, Vector3.FORWARD)
