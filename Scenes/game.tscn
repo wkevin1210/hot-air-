@@ -1,9 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr6xr07am0n4f"]
+[gd_scene load_steps=10 format=3 uid="uid://cr6xr07am0n4f"]
 
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
 [ext_resource type="PackedScene" uid="uid://br53goriq0rx8" path="res://Scenes/checkpoint.tscn" id="2_e4fhv"]
 [ext_resource type="Script" path="res://Scripts/direction_arrow.gd" id="3_wam52"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wig8d"]
+sky_material = SubResource("ProceduralSkyMaterial_b8yhy")
+
+[sub_resource type="Environment" id="Environment_kwxo0"]
+background_mode = 2
+sky = SubResource("Sky_wig8d")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_mle6q"]
 
@@ -12,6 +25,9 @@ albedo_color = Color(0, 1, 0.333333, 1)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_wr1w7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kwxo0")
 
 [node name="Player" parent="." instance=ExtResource("1_ig83k")]
 unique_name_in_owner = true
