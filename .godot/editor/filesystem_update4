@@ -6,3 +6,6 @@ res://Balloon.tscn
 res://test_Scene.tscn
 res://Cloud.tscn
 res://Clouds.tscn
+res://Scenes/Balloon.tscn
+res://Scenes/Clouds.tscn
+res://Scenes/Cloud.tscn

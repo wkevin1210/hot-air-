@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
 [ext_resource type="PackedScene" uid="uid://br53goriq0rx8" path="res://Scenes/checkpoint.tscn" id="2_e4fhv"]
-[ext_resource type="Script" path="res://Scenes/spawner.gd" id="2_vf667"]
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_vf667"]
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="3_8hhod"]
-[ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Balloon.tscn" id="5_33y6m"]
-[ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Clouds.tscn" id="7_abudy"]
+[ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="5_33y6m"]
+[ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Scenes/Clouds.tscn" id="7_abudy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
