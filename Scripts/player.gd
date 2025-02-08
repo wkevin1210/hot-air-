@@ -1,14 +1,13 @@
 extends CharacterBody3D
 
-@export var max_speed = 10.0
+@export var max_speed = 20.0
 @export var min_speed = 2.0
 @export var accel = 0.6
 @export var pitch_speed = 1.5
 @export var roll_speed = 1.5
 @export var yaw_speed = 1.0
 @export var input_response = 5.0
-@export var hp = 3
-var point = 0
+
 
 @export var forward_speed = 5.0
 var pitch_input = 0.0
@@ -30,15 +29,54 @@ func get_input(delta):
 	yaw_input = lerp(yaw_input,
 		Input.get_action_strength("yaw_left") - Input.get_action_strength("yaw_right"),
 		input_response * delta)
+	
+var mouse_y = 0.0
+var mouse_x = 0.0
+var target_x = 0.0
+var target_y = 0.0
+var mouse_moving = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			mouse_moving = true
+			target_y = -event.relative.y
+			target_x = -event.relative.x
 		
+
+var mouse_accel = 3.0
+var mouse_deccel = 8.0
+
 func _physics_process(delta: float) -> void:
 	get_input(delta)
 	transform.basis = transform.basis.rotated(transform.basis.z, roll_input * roll_speed * delta)
 	transform.basis = transform.basis.rotated(transform.basis.x, pitch_input * pitch_speed * delta)
 	transform.basis = transform.basis.rotated(transform.basis.y, yaw_input * yaw_speed * delta)
+	
+	if mouse_moving:
+		mouse_y = lerp(mouse_y, target_y, mouse_accel * delta)
+		mouse_x = lerp(mouse_x, target_x, mouse_accel * delta)
+	else:
+		print(Vector2(mouse_x, mouse_y))
+		mouse_y = lerp(mouse_y, 0.0, mouse_deccel * delta)
+		mouse_x = lerp(mouse_x, 0.0, mouse_deccel * delta)
+		
+	if abs(mouse_x) <= 3 or abs(mouse_y) <= 3:
+		mouse_moving = false
+
+	transform.basis = transform.basis.rotated(transform.basis.x, mouse_y * 0.0005)
+	transform.basis = transform.basis.rotated(transform.basis.y, mouse_x * 0.0005)
+	
+	
 	transform.basis = transform.basis.orthonormalized()
 	velocity = -transform.basis.z * forward_speed
 	move_and_collide(velocity * delta)
+
+@export var hp = 3
 
 func damage():
 	if hp > 0:
@@ -48,6 +86,8 @@ func damage():
 
 func destroy():
 	get_tree().reload_current_scene()
+
+var point = 0
 
 func add_point():
 	point += 1
