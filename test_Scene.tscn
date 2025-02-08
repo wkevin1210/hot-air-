@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=2 format=3 uid="uid://bfie8exvttuyk"]
-
-[ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Balloon.tscn" id="1_ca16n"]
-=======
 [gd_scene load_steps=2 format=3 uid="uid://jr0eo44wpdvg"]
 
 [ext_resource type="PackedScene" uid="uid://u1iq3pqexgrr" path="res://Balloon.tscn" id="1_ca16n"]
->>>>>>> Stashed changes
 
 [node name="Node3D" type="Node3D"]
 
