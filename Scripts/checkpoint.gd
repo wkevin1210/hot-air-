@@ -3,7 +3,7 @@ extends Area3D
 @onready var player = get_parent().get_node("Player")
 
 func _process(_delta: float) -> void:
-	rotate_y(0.05)
+	rotate_y(0.01)
 
 func spawn():
 	add_to_group("Checkpoints")
