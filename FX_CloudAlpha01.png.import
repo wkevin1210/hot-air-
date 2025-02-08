@@ -3,7 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c71rel6xshgel"
+<<<<<<< Updated upstream:FX_CloudAlpha01.png.import
 path.s3tc="res://.godot/imported/FX_CloudAlpha01.png-b23bc75435055c4cd66eb9aad9c6587f.s3tc.ctex"
+=======
+path.s3tc="res://.godot/imported/FX_CloudAlpha01.png-686f0dc2b76d28d29b653640acd71db6.s3tc.ctex"
+>>>>>>> Stashed changes:Textures/FX_CloudAlpha01.png.import
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +15,13 @@ metadata={
 
 [deps]
 
+<<<<<<< Updated upstream:FX_CloudAlpha01.png.import
 source_file="res://FX_CloudAlpha01.png"
 dest_files=["res://.godot/imported/FX_CloudAlpha01.png-b23bc75435055c4cd66eb9aad9c6587f.s3tc.ctex"]
+=======
+source_file="res://Textures/FX_CloudAlpha01.png"
+dest_files=["res://.godot/imported/FX_CloudAlpha01.png-686f0dc2b76d28d29b653640acd71db6.s3tc.ctex"]
+>>>>>>> Stashed changes:Textures/FX_CloudAlpha01.png.import
 
 [params]
 

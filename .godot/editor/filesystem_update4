@@ -1,9 +1,0 @@
-res://Scenes/player.tscn
-res://Scenes/game.tscn
-res://Scenes/checkpoint.tscn
-res://Scenes/Plane.tscn
-res://Balloon.tscn
-res://test_Scene.tscn
-res://Cloud.tscn
-res://Clouds.tscn
-res://Scripts/player.gd

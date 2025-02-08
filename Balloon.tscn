@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=3 uid="uid://cg7c41fny12xj"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://u1iq3pqexgrr"]
+>>>>>>> Stashed changes
 
 [ext_resource type="ArrayMesh" uid="uid://c1feietmdtoi5" path="res://Models/Balloon.obj" id="1_hqq88"]
 [ext_resource type="Script" path="res://balloon.gd" id="2_8ga81"]
