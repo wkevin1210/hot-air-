@@ -1,8 +1,8 @@
+CollisionShape3D
 CanvasLayer
 Node3D
 DirectionalLight3D
 MeshInstance3D
-CollisionShape3D
 Area3D
 WorldEnvironment
 Camera3D
