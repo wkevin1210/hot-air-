@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="3_8hhod"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="5_33y6m"]
 [ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Scenes/Clouds.tscn" id="7_abudy"]
-[ext_resource type="Script" path="res://Scenes/cam_root.gd" id="7_rw8pr"]
+[ext_resource type="Script" path="res://Scripts/cam_root.gd" id="7_rw8pr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -16,13 +16,13 @@ ground_bottom_color = Color(1, 1, 1, 1)
 ground_horizon_color = Color(0.649855, 0.659311, 0.674239, 1)
 ground_curve = 1.1536
 
-[sub_resource type="Sky" id="Sky_wig8d"]
+[sub_resource type="Sky" id="Sky_cgwc0"]
 sky_material = SubResource("ProceduralSkyMaterial_b8yhy")
 
 [sub_resource type="Environment" id="Environment_kwxo0"]
 background_mode = 2
 background_color = Color(0.518629, 0.863764, 1, 0.615686)
-sky = SubResource("Sky_wig8d")
+sky = SubResource("Sky_cgwc0")
 tonemap_mode = 2
 glow_enabled = true
 fog_light_color = Color(0.744356, 0.769036, 0.807818, 1)
