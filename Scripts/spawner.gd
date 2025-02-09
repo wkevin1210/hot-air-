@@ -9,4 +9,5 @@ func spawn_ballloon():
 
 
 func _on_timer_timeout() -> void:
-	spawn_ballloon()
+	if %Holder.get_child_count() < 500:
+		spawn_ballloon()
