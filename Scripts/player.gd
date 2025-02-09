@@ -49,7 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 
 var mouse_accel = 3.0
-var mouse_deccel = 8.0
+var mouse_deccel = 10.0
 
 func _physics_process(delta: float) -> void:
 	get_input(delta)
