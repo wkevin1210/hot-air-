@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/balloon_menu.gd" id="3_1rkno"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="4_5uqoc"]
 [ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Sounds/Wind.wav" id="6_85hbi"]
-[ext_resource type="Script" path="res://Scenes/master_volume.gd" id="6_ru1ub"]
+[ext_resource type="Script" path="res://Scripts/master_volume.gd" id="6_ru1ub"]
 [ext_resource type="AudioStream" uid="uid://bgqgy5h8pmoos" path="res://Resources/Popping.tres" id="7_d70po"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxmub"]

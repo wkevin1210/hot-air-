@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr6xr07am0n4f"]
+[gd_scene load_steps=22 format=3 uid="uid://cr6xr07am0n4f"]
 
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Scripts/cam_root.gd" id="7_rw8pr"]
 [ext_resource type="Material" uid="uid://cl3n6wr8h6hsg" path="res://Textures/Arrow_Mat.tres" id="10_4js1u"]
 [ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Sounds/Wind.wav" id="10_o0aen"]
+[ext_resource type="AudioStream" uid="uid://cla45mersvkai" path="res://Sounds/propeller.wav" id="11_hpyti"]
+[ext_resource type="Script" path="res://Scenes/propeller_player.gd" id="12_7eoq6"]
 [ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="12_b7eir"]
 [ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="12_fn4y5"]
 [ext_resource type="AudioStream" uid="uid://bgqgy5h8pmoos" path="res://Resources/Popping.tres" id="14_pewfs"]
@@ -97,11 +99,17 @@ transform = Transform3D(1.25979, 0, 0, 0, 0.677501, -7.10543e-15, 0, -9.9476e-14
 mesh = SubResource("CylinderMesh_gndw7")
 surface_material_override/0 = ExtResource("10_4js1u")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="WindPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_o0aen")
-volume_db = 7.0
-pitch_scale = 1.43
+pitch_scale = 1.27
 autoplay = true
+
+[node name="PropellerPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_hpyti")
+volume_db = -17.0
+pitch_scale = 0.5
+autoplay = true
+script = ExtResource("12_7eoq6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -208,8 +216,10 @@ stream = ExtResource("14_pewfs")
 volume_db = -10.0
 
 [connection signal="timeout" from="Targetted Spawner/Timer" to="Targetted Spawner" method="_on_timer_timeout"]
+[connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="death" from="Player" to="CamRoot" method="_on_player_death"]
 [connection signal="death" from="Player" to="CanvasLayer/Control" method="_on_player_death"]
 [connection signal="death" from="Player" to="CanvasLayer/GameOverScreen" method="_on_player_death"]
+[connection signal="death" from="Player" to="PropellerPlayer" method="_on_player_death"]
 [connection signal="collected" from="Checkpoint" to="." method="_on_checkpoint_collected"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/BackButton" to="CanvasLayer/GameOverScreen" method="_on_back_button_pressed"]
