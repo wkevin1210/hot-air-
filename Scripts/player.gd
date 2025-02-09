@@ -61,7 +61,6 @@ func _physics_process(delta: float) -> void:
 		mouse_y = lerp(mouse_y, target_y, mouse_accel * delta)
 		mouse_x = lerp(mouse_x, target_x, mouse_accel * delta)
 	else:
-		print(Vector2(mouse_x, mouse_y))
 		mouse_y = lerp(mouse_y, 0.0, mouse_deccel * delta)
 		mouse_x = lerp(mouse_x, 0.0, mouse_deccel * delta)
 		

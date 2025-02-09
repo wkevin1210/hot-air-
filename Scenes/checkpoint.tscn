@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_x6q72"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_dwicg"]
+[sub_resource type="TorusMesh" id="TorusMesh_oe76b"]
+inner_radius = 1.302
+outer_radius = 1.728
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lii1o"]
-albedo_color = Color(0, 0.913725, 1, 1)
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.729412, 0.737255, 0.0666667, 0.776471)
+refraction_scale = -1.0
+proximity_fade_distance = 0.01
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wuotu"]
 margin = 1.255
@@ -16,8 +22,8 @@ height = 2.85912
 script = ExtResource("1_x6q72")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1.2981, 0, 0, 0)
-mesh = SubResource("SphereMesh_dwicg")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_oe76b")
 surface_material_override/0 = SubResource("StandardMaterial3D_lii1o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

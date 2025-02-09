@@ -1,9 +1,10 @@
 extends Area3D
 
-@onready var player = get_parent().get_node("Player")
+@onready var player : CharacterBody3D = get_parent().get_node("Player")
 
 func _process(_delta: float) -> void:
-	rotate_y(0.01)
+	if player != null:
+		look_at(player.global_position)
 
 func spawn():
 	add_to_group("Checkpoints")
