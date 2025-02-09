@@ -86,9 +86,9 @@ func damage():
 func destroy():
 	get_tree().reload_current_scene()
 
-var point = 0
+@export var point = 0
 
 func add_point():
 	point += 1
-	if %Timer.wait_time > .01:
-		%Timer.wait_time = %Timer.wait_time - .05
+	if %Timer.wait_time > 0.01:
+		%Timer.wait_time = %Timer.wait_time - 0.01
