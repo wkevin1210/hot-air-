@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://p43bd6gic80b"]
 
-[ext_resource type="Script" path="res://Scripts/Hud.gd" id="1_88xlq"]
-[ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="2_2gxn0"]
+[ext_resource type="Script" uid="uid://cbkswkmc5sbv1" path="res://Scripts/Hud.gd" id="1_88xlq"]
+[ext_resource type="FontFile" uid="uid://b723w63oyxxhw" path="res://CoffeCake.ttf" id="2_8vcfy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jd1y"]
 bg_color = Color(0.229081, 0.231112, 0.228084, 0.313726)
@@ -10,8 +10,10 @@ bg_color = Color(0.229081, 0.231112, 0.228084, 0.313726)
 bg_color = Color(0.501018, 0.0335687, 0.184303, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_xfe0x"]
-font = ExtResource("2_2gxn0")
+font = ExtResource("2_8vcfy")
 font_size = 22
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" node_paths=PackedStringArray("speed_bar")]
 layout_mode = 3

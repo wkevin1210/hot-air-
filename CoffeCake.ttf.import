@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dulfovq380ecv"
-path="res://.godot/imported/KingsmanDemo-1GVgg.ttf-d7759376f04902c21eef9f957829a358.fontdata"
+uid="uid://b723w63oyxxhw"
+path="res://.godot/imported/CoffeCake.ttf-bd10c5eefcfd0f7c00f248ce36b80493.fontdata"
 
 [deps]
 
-source_file="res://KingsmanDemo-1GVgg.ttf"
-dest_files=["res://.godot/imported/KingsmanDemo-1GVgg.ttf-d7759376f04902c21eef9f957829a358.fontdata"]
+source_file="res://CoffeCake.ttf"
+dest_files=["res://.godot/imported/CoffeCake.ttf-bd10c5eefcfd0f7c00f248ce36b80493.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

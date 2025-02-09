@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://7kk84aj4unwq"]
 
-[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_8by1o"]
+[ext_resource type="Script" uid="uid://cpbskyukel7vu" path="res://Scripts/start_menu.gd" id="1_8by1o"]
 [ext_resource type="PackedScene" uid="uid://drpbwsyj2i16e" path="res://Scenes/Cloud.tscn" id="2_brptw"]
-[ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="2_xolj7"]
-[ext_resource type="Script" path="res://Scripts/balloon_menu.gd" id="3_1rkno"]
+[ext_resource type="Script" uid="uid://custpuqxtmgjj" path="res://Scripts/balloon_menu.gd" id="3_1rkno"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="4_5uqoc"]
+[ext_resource type="FontFile" uid="uid://b723w63oyxxhw" path="res://CoffeCake.ttf" id="5_ru7em"]
 [ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Sounds/Wind.wav" id="6_85hbi"]
-[ext_resource type="Script" path="res://Scripts/master_volume.gd" id="6_ru1ub"]
+[ext_resource type="Script" uid="uid://yxeolykau3ov" path="res://Scripts/master_volume.gd" id="6_ru1ub"]
 [ext_resource type="AudioStream" uid="uid://bgqgy5h8pmoos" path="res://Resources/Popping.tres" id="7_d70po"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxmub"]
@@ -31,9 +31,10 @@ fog_height = -1024.0
 volumetric_fog_density = 0.1
 
 [sub_resource type="LabelSettings" id="LabelSettings_pwv50"]
-font = ExtResource("2_xolj7")
-font_size = 46
-font_color = Color(0, 0, 0, 1)
+font = ExtResource("5_ru7em")
+font_size = 50
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [node name="StartMenu" type="CanvasLayer"]
 script = ExtResource("1_8by1o")
@@ -45,6 +46,12 @@ environment = SubResource("Environment_b42tr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.107166, -0.65896, 0.744505, 0, 0.748817, 0.662777, -0.994241, 0.0710275, -0.0802481, 0, 0, 0)
+
+[node name="Cloud2" parent="WorldEnvironment" instance=ExtResource("2_brptw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02399, 0.0308609, -9.81827)
+
+[node name="Cloud" parent="WorldEnvironment" instance=ExtResource("2_brptw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21275, 0.112141, -7.50982)
 
 [node name="BalloonMenu" type="Node" parent="WorldEnvironment"]
 script = ExtResource("3_1rkno")
@@ -76,13 +83,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -136.5
-offset_right = 136.5
-offset_bottom = 139.0
+offset_left = -144.0
+offset_top = 25.0
+offset_right = 142.0
+offset_bottom = 164.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_xolj7")
-theme_override_font_sizes/font_size = 92
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ru7em")
+theme_override_font_sizes/font_size = 80
 text = "Hot Air!"
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
@@ -101,27 +110,27 @@ grow_vertical = 2
 [node name="StartButton" type="Button" parent="MainMenu"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.653092, 0.76713, 0.997292, 1)
-theme_override_fonts/font = ExtResource("2_xolj7")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ru7em")
+theme_override_font_sizes/font_size = 25
 text = "Start"
 
 [node name="Controls" type="Button" parent="MainMenu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_xolj7")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ru7em")
+theme_override_font_sizes/font_size = 25
 text = "Controls"
 
 [node name="Audio" type="Button" parent="MainMenu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_xolj7")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ru7em")
+theme_override_font_sizes/font_size = 25
 text = "Audio Settings"
 
 [node name="Quit" type="Button" parent="MainMenu"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933326, 4.81308e-06, 9.62615e-07, 1)
-theme_override_fonts/font = ExtResource("2_xolj7")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_ru7em")
+theme_override_font_sizes/font_size = 25
 text = "Quit"
 
 [node name="AudioMenu" type="VBoxContainer" parent="."]
@@ -153,7 +162,8 @@ script = ExtResource("6_ru1ub")
 
 [node name="Back2" type="Button" parent="AudioMenu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_xolj7")
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ru7em")
 theme_override_font_sizes/font_size = 46
 text = "Back"
 
@@ -164,12 +174,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -139.0
-offset_right = 180.0
-offset_bottom = 139.0
+offset_left = -154.0
+offset_top = -170.0
+offset_right = 154.0
+offset_bottom = 278.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 
 [node name="ControlsText" type="Label" parent="ControlsMenu"]
 layout_mode = 2
@@ -184,12 +195,16 @@ Space: Throttle down
 Click once to activate mouse movement
 Esc to disable mouse movement
 
+Plane's Trail indicates Health:
+Green - 3 , Yellow - 2,  Red - 1
+
 Fly through the checkpoints
 Avoid the balloons!"
 
 [node name="Back" type="Button" parent="ControlsMenu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_xolj7")
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("5_ru7em")
 theme_override_font_sizes/font_size = 46
 text = "Back"
 

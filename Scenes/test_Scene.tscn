@@ -1,21 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfie8exvttuyk"]
+[gd_scene load_steps=6 format=3 uid="uid://bfie8exvttuyk"]
 
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="1_ca16n"]
+[ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_lvvid"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ea1r4"]
+sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
+sky_curve = 0.227357
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(0.649855, 0.659311, 0.674239, 1)
+ground_curve = 1.1536
+
+[sub_resource type="Sky" id="Sky_cgwc0"]
+sky_material = SubResource("ProceduralSkyMaterial_ea1r4")
+
+[sub_resource type="Environment" id="Environment_bmakk"]
+background_mode = 2
+background_color = Color(0.518629, 0.863764, 1, 0.615686)
+sky = SubResource("Sky_cgwc0")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.744356, 0.769036, 0.807818, 1)
+fog_light_energy = 0.0
+fog_height = -1024.0
+volumetric_fog_density = 0.1
 
 [node name="Node3D" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bmakk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.107166, -0.65896, 0.744505, 0, 0.748817, 0.662777, -0.994241, 0.0710275, -0.0802481, 0, 0, 0)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01192, 5.33859)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355347, 6.94869, 13.6972)
 fov = 67.5
 
+[node name="Player" parent="." instance=ExtResource("1_lvvid")]
+unique_name_in_owner = true
+transform = Transform3D(0.952661, -0.304033, 0, 0.295633, 0.926339, 0.233445, -0.0709751, -0.222394, 0.97237, 1.2234, 5.84786, 11.1662)
+
 [node name="Balloon" parent="." instance=ExtResource("1_ca16n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30303, -2.2959, -24.5433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.52747, -3.24194, -11.2272)
 
 [node name="Balloon2" parent="." instance=ExtResource("1_ca16n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9248, 4.19604, -24.6332)
-
-[node name="Balloon3" parent="." instance=ExtResource("1_ca16n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3986, 2.9375, -55.7289)
-
-[node name="Balloon4" parent="." instance=ExtResource("1_ca16n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2234, 5.84786, -8.22809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50278, 1.2685, -8.45435)

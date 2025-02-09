@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://br53goriq0rx8"]
 
-[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_x6q72"]
+[ext_resource type="Script" uid="uid://b5lyu4eytfsid" path="res://Scripts/checkpoint.gd" id="1_x6q72"]
 [ext_resource type="AudioStream" uid="uid://div5ydlo21ut" path="res://Sounds/CheckPoint.wav" id="2_3nk3o"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_oe76b"]

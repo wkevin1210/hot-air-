@@ -99,7 +99,7 @@ tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0333333, 1, 0, 0, -0.7431
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_anq2g"]
 _data = {
-"Cube_001Action_001": SubResource("Animation_qg41j")
+&"Cube_001Action_001": SubResource("Animation_qg41j")
 }
 
 [node name="Plane" type="Node3D"]
