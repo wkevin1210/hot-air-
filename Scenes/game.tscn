@@ -1,13 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://cr6xr07am0n4f"]
+[gd_scene load_steps=17 format=3 uid="uid://cr6xr07am0n4f"]
 
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
 [ext_resource type="PackedScene" uid="uid://br53goriq0rx8" path="res://Scenes/checkpoint.tscn" id="2_e4fhv"]
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_vf667"]
+[ext_resource type="PackedScene" uid="uid://p43bd6gic80b" path="res://Scenes/Hud.tscn" id="2_xw8j2"]
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="3_8hhod"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="5_33y6m"]
 [ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Scenes/Clouds.tscn" id="7_abudy"]
 [ext_resource type="Script" path="res://Scripts/cam_root.gd" id="7_rw8pr"]
+[ext_resource type="Material" uid="uid://cl3n6wr8h6hsg" path="res://Textures/Arrow_Mat.tres" id="10_4js1u"]
+[ext_resource type="AudioStream" uid="uid://cnrb0au6ivkxj" path="res://Sounds/cold-wind-sound-effect-127448.wav" id="10_w3ls0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -33,8 +36,10 @@ volumetric_fog_density = 0.1
 [sub_resource type="PrismMesh" id="PrismMesh_xfy1m"]
 lightmap_size_hint = Vector2i(14, 21)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5hcj"]
-albedo_color = Color(0, 1, 0.333333, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_gndw7"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.25
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_wr1w7")
@@ -45,7 +50,7 @@ balloon = ExtResource("5_33y6m")
 
 [node name="Timer" type="Timer" parent="Targetted Spawner"]
 unique_name_in_owner = true
-wait_time = 0.2
+wait_time = 0.3
 autostart = true
 
 [node name="Holder" type="Node3D" parent="."]
@@ -59,6 +64,7 @@ transform = Transform3D(-0.107166, -0.65896, 0.744505, 0, 0.748817, 0.662777, -0
 
 [node name="Player" parent="." instance=ExtResource("1_ig83k")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 59.0228)
 
 [node name="Checkpoint" parent="." groups=["Checkpoints"] instance=ExtResource("2_e4fhv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0894365, 0.0670133, -19.3135)
@@ -79,10 +85,26 @@ script = ExtResource("3_8hhod")
 [node name="DirectionArrow" type="MeshInstance3D" parent="CamRoot/PlayerCam/Arrow"]
 transform = Transform3D(0.405315, 0, 0, 0, -3.39252e-08, 0.122083, 0, -0.776118, -5.33642e-09, 0, 0, 0)
 rotation_order = 0
-transparency = 0.5
 mesh = SubResource("PrismMesh_xfy1m")
 skeleton = NodePath("../../../../Player")
-surface_material_override/0 = SubResource("StandardMaterial3D_s5hcj")
+surface_material_override/0 = ExtResource("10_4js1u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CamRoot/PlayerCam/Arrow/DirectionArrow"]
+transform = Transform3D(1.25979, 0, 0, 0, 0.677501, -7.10543e-15, 0, -9.9476e-14, 4.02202, 0, -0.586499, -1.33514e-05)
+mesh = SubResource("CylinderMesh_gndw7")
+surface_material_override/0 = ExtResource("10_4js1u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_w3ls0")
+volume_db = 7.373
+pitch_scale = 1.43
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("2_xw8j2")]
+mouse_filter = 2
 
 [connection signal="timeout" from="Targetted Spawner/Timer" to="Targetted Spawner" method="_on_timer_timeout"]
 [connection signal="collected" from="Checkpoint" to="." method="_on_checkpoint_collected"]

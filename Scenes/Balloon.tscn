@@ -2,10 +2,10 @@
 
 [ext_resource type="ArrayMesh" uid="uid://c1feietmdtoi5" path="res://Models/Balloon.obj" id="1_hqq88"]
 [ext_resource type="Script" path="res://Scripts/balloon.gd" id="2_8ga81"]
-[ext_resource type="AudioStream" uid="uid://de4otvegdsib7" path="res://506545__matrixxx__pop-02.wav" id="3_8x6tj"]
-[ext_resource type="AudioStream" uid="uid://bv8x3mm8brrwh" path="res://570459__splendidjams__simple-pop-sound-effect.wav" id="4_xoomn"]
-[ext_resource type="AudioStream" uid="uid://b766bqle5o1gm" path="res://188381_-popping-pops.wav" id="5_i7nae"]
-[ext_resource type="AudioStream" uid="uid://gafjskhump7p" path="res://188381__wubitog__3-popping-pops.wav" id="6_gmmvs"]
+[ext_resource type="AudioStream" uid="uid://de4otvegdsib7" path="res://Sounds/506545__matrixxx__pop-02.wav" id="3_8x6tj"]
+[ext_resource type="AudioStream" uid="uid://bv8x3mm8brrwh" path="res://Sounds/570459__splendidjams__simple-pop-sound-effect.wav" id="4_xoomn"]
+[ext_resource type="AudioStream" uid="uid://b766bqle5o1gm" path="res://Sounds/188381_-popping-pops.wav" id="5_i7nae"]
+[ext_resource type="AudioStream" uid="uid://gafjskhump7p" path="res://Sounds/188381__wubitog__3-popping-pops.wav" id="6_gmmvs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_43aq3"]
 radius = 1.47848
@@ -34,6 +34,7 @@ collision_layer = 4
 collision_mask = 4
 mass = 0.001
 gravity_scale = 0.1
+lock_rotation = true
 script = ExtResource("2_8ga81")
 balloon = NodePath("Balloon")
 
