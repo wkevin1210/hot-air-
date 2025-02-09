@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cio6v25pe4cn7"]
+[gd_scene load_steps=9 format=3 uid="uid://cio6v25pe4cn7"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_bwwpn"]
 [ext_resource type="PackedScene" uid="uid://bnlmq3lqenbtw" path="res://Scenes/Plane.tscn" id="2_tj7c7"]
 [ext_resource type="AudioStream" uid="uid://cla45mersvkai" path="res://Sounds/propeller.wav" id="3_1k56s"]
 [ext_resource type="Script" path="res://Textures/Trail3D.gd" id="4_sqimd"]
+[ext_resource type="AudioStream" uid="uid://g5diqjl0lwwx" path="res://Sounds/explosion.wav" id="5_enx5t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nobst"]
 size = Vector3(0.538769, 0.278442, 3.99017)
@@ -37,7 +38,7 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.
 [node name="propeller" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_1k56s")
-volume_db = -33.967
+volume_db = -40.0
 unit_size = 50.0
 autoplay = true
 
@@ -60,3 +61,8 @@ _fromWidth = 0.1
 _lifespan = 0.5
 _startColor = Color(0, 0.784314, 0, 1)
 _endColor = Color(0, 0.784314, 0, 0)
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_enx5t")
+volume_db = -19.667

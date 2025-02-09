@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://bgqgy5h8pmoos"]
+
+[ext_resource type="AudioStream" uid="uid://de4otvegdsib7" path="res://Sounds/506545__matrixxx__pop-02.wav" id="1_a64d3"]
+[ext_resource type="AudioStream" uid="uid://bv8x3mm8brrwh" path="res://Sounds/570459__splendidjams__simple-pop-sound-effect.wav" id="2_ghiby"]
+[ext_resource type="AudioStream" uid="uid://b766bqle5o1gm" path="res://Sounds/188381_-popping-pops.wav" id="3_12fgi"]
+[ext_resource type="AudioStream" uid="uid://gafjskhump7p" path="res://Sounds/188381__wubitog__3-popping-pops.wav" id="4_msud1"]
+
+[resource]
+playback_mode = 1
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("1_a64d3")
+stream_1/stream = ExtResource("2_ghiby")
+stream_2/stream = ExtResource("3_12fgi")
+stream_3/stream = ExtResource("4_msud1")

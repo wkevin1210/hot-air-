@@ -14,7 +14,7 @@ var roll_input = 0.0
 var yaw_input = 0.0
 
 #Player stats / Hud Info & signals
-@export var hp = 1
+@export var hp = 3
 @export var points = 0
 signal score_change(int)
 signal speed_change(float)
@@ -43,43 +43,45 @@ var target_y = 0.0
 var mouse_moving = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventMouseMotion:
-			mouse_moving = true
-			target_y = -event.relative.y
-			target_x = -event.relative.x
+	if hp != 0:
+		if event is InputEventMouseButton:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		elif event.is_action_pressed("ui_cancel"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			if event is InputEventMouseMotion:
+				mouse_moving = true
+				target_y = -event.relative.y
+				target_x = -event.relative.x
 		
 
 var mouse_accel = 3.0
 var mouse_deccel = 10.0
 
 func _physics_process(delta: float) -> void:
-	get_input(delta)
-	transform.basis = transform.basis.rotated(transform.basis.z, roll_input * roll_speed * delta)
-	transform.basis = transform.basis.rotated(transform.basis.x, pitch_input * pitch_speed * delta)
-	transform.basis = transform.basis.rotated(transform.basis.y, yaw_input * yaw_speed * delta)
-	
-	if mouse_moving:
-		mouse_y = lerp(mouse_y, target_y, mouse_accel * delta)
-		mouse_x = lerp(mouse_x, target_x, mouse_accel * delta)
-	else:
-		mouse_y = lerp(mouse_y, 0.0, mouse_deccel * delta)
-		mouse_x = lerp(mouse_x, 0.0, mouse_deccel * delta)
+	if hp != 0:
+		get_input(delta)
+		transform.basis = transform.basis.rotated(transform.basis.z, roll_input * roll_speed * delta)
+		transform.basis = transform.basis.rotated(transform.basis.x, pitch_input * pitch_speed * delta)
+		transform.basis = transform.basis.rotated(transform.basis.y, yaw_input * yaw_speed * delta)
 		
-	if abs(mouse_x) <= 3 or abs(mouse_y) <= 3:
-		mouse_moving = false
+		if mouse_moving:
+			mouse_y = lerp(mouse_y, target_y, mouse_accel * delta)
+			mouse_x = lerp(mouse_x, target_x, mouse_accel * delta)
+		else:
+			mouse_y = lerp(mouse_y, 0.0, mouse_deccel * delta)
+			mouse_x = lerp(mouse_x, 0.0, mouse_deccel * delta)
+			
+		if abs(mouse_x) <= 3 or abs(mouse_y) <= 3:
+			mouse_moving = false
 
-	transform.basis = transform.basis.rotated(transform.basis.x, mouse_y * 0.0005)
-	transform.basis = transform.basis.rotated(transform.basis.y, mouse_x * 0.0005)
-	
-	
-	transform.basis = transform.basis.orthonormalized()
-	velocity = -transform.basis.z * forward_speed
-	move_and_collide(velocity * delta)
+		transform.basis = transform.basis.rotated(transform.basis.x, mouse_y * 0.0005)
+		transform.basis = transform.basis.rotated(transform.basis.y, mouse_x * 0.0005)
+		
+		
+		transform.basis = transform.basis.orthonormalized()
+		velocity = -transform.basis.z * forward_speed
+		move_and_collide(velocity * delta)
 
 func damage():
 	if hp > 0:
@@ -91,17 +93,16 @@ func damage():
 signal death
 func destroy():
 	emit_signal("death")
+	%Death.playing = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().paused = true
 	visible = false
-
+	#get_tree().paused = true
 
 func add_point():
 	points += 1
 	score_change.emit(points)
 	if %Timer.wait_time > .02:
 		%Timer.wait_time = %Timer.wait_time - .02
-		print(%Timer.wait_time)
 
 func health_change():
 	if hp == 2:

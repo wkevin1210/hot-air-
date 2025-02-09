@@ -10,6 +10,8 @@ outer_radius = 1.728
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lii1o"]
 transparency = 1
 albedo_color = Color(0.729412, 0.737255, 0.0666667, 0.776471)
+emission = Color(0.787759, 0.787759, 0.787759, 1)
+backlight_enabled = true
 refraction_scale = -1.0
 proximity_fade_distance = 0.01
 
@@ -33,6 +35,12 @@ shape = SubResource("CapsuleShape3D_wuotu")
 unique_name_in_owner = true
 stream = ExtResource("2_3nk3o")
 volume_db = -15.135
+pitch_scale = 0.68
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.407843, 0.498039, 1)
+light_energy = 41.585
+omni_range = 6.34137
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

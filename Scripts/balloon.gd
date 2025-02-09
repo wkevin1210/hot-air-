@@ -22,7 +22,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func destroy():
 	balloon.visible = false
-	%AudioStreamPlayer3D.playing = true
+	%Popping.playing = true
 
 func _on_audio_stream_player_3d_finished() -> void:
 	queue_free()

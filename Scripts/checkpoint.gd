@@ -24,9 +24,11 @@ func spawn():
 signal collected
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		set_deferred("monitoring", false)
 		collected.emit()
 		body.add_point()
 		%AudioStreamPlayer.playing = true
+		
 
 
 func _on_audio_stream_player_finished() -> void:

@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://7kk84aj4unwq"]
+[gd_scene load_steps=13 format=3 uid="uid://7kk84aj4unwq"]
 
 [ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_8by1o"]
 [ext_resource type="PackedScene" uid="uid://drpbwsyj2i16e" path="res://Scenes/Cloud.tscn" id="2_brptw"]
 [ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="2_xolj7"]
 [ext_resource type="Script" path="res://Scripts/balloon_menu.gd" id="3_1rkno"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="4_5uqoc"]
-[ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Wind.wav" id="6_85hbi"]
+[ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Sounds/Wind.wav" id="6_85hbi"]
+[ext_resource type="Script" path="res://Scenes/master_volume.gd" id="6_ru1ub"]
+[ext_resource type="AudioStream" uid="uid://bgqgy5h8pmoos" path="res://Resources/Popping.tres" id="7_d70po"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxmub"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -28,6 +30,11 @@ fog_light_energy = 0.0
 fog_height = -1024.0
 volumetric_fog_density = 0.1
 
+[sub_resource type="LabelSettings" id="LabelSettings_pwv50"]
+font = ExtResource("2_xolj7")
+font_size = 46
+font_color = Color(0, 0, 0, 1)
+
 [node name="StartMenu" type="CanvasLayer"]
 script = ExtResource("1_8by1o")
 
@@ -35,18 +42,6 @@ script = ExtResource("1_8by1o")
 environment = SubResource("Environment_b42tr")
 
 [node name="Background" parent="WorldEnvironment" instance=ExtResource("2_brptw")]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="WorldEnvironment"]
-offset_right = 1151.0
-offset_bottom = 648.0
-
-[node name="SubViewport" type="SubViewport" parent="WorldEnvironment/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1151, 648)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="WorldEnvironment/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(-0.107166, -0.65896, 0.744505, 0, 0.748817, 0.662777, -0.994241, 0.0710275, -0.0802481, 0, 0, 0)
@@ -57,6 +52,25 @@ balloon = ExtResource("4_5uqoc")
 
 [node name="Timer" type="Timer" parent="WorldEnvironment/BalloonMenu"]
 autostart = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5
@@ -97,12 +111,51 @@ theme_override_fonts/font = ExtResource("2_xolj7")
 theme_override_font_sizes/font_size = 30
 text = "Controls"
 
+[node name="Audio" type="Button" parent="MainMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xolj7")
+theme_override_font_sizes/font_size = 30
+text = "Audio Settings"
+
 [node name="Quit" type="Button" parent="MainMenu"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.933326, 4.81308e-06, 9.62615e-07, 1)
 theme_override_fonts/font = ExtResource("2_xolj7")
 theme_override_font_sizes/font_size = 30
 text = "Quit"
+
+[node name="AudioMenu" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -188.5
+offset_right = 180.0
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="Label" type="Label" parent="AudioMenu"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_pwv50")
+horizontal_alignment = 1
+
+[node name="MasterVolume" type="HSlider" parent="AudioMenu"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("6_ru1ub")
+
+[node name="Back2" type="Button" parent="AudioMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xolj7")
+theme_override_font_sizes/font_size = 46
+text = "Back"
 
 [node name="ControlsMenu" type="VBoxContainer" parent="."]
 visible = false
@@ -140,14 +193,21 @@ theme_override_fonts/font = ExtResource("2_xolj7")
 theme_override_font_sizes/font_size = 46
 text = "Back"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Wind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_85hbi")
-volume_db = -20.0
+volume_db = 7.0
 pitch_scale = 1.43
 autoplay = true
+
+[node name="Popping" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_d70po")
+volume_db = -10.0
 
 [connection signal="timeout" from="WorldEnvironment/BalloonMenu/Timer" to="WorldEnvironment/BalloonMenu" method="_on_timer_timeout"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MainMenu/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="AudioMenu/Back2" to="." method="_on_back_2_pressed"]
 [connection signal="pressed" from="ControlsMenu/Back" to="." method="_on_back_pressed"]

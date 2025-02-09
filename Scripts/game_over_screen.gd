@@ -32,5 +32,7 @@ func _on_player_death() -> void:
 
 
 func _on_back_button_pressed() -> void:
-	get_tree().paused = false
+	#get_tree().paused = false
+	%Popping.playing = true
+	await %Popping.finished
 	get_tree().change_scene_to_file("res://Scenes/start_menu.tscn")

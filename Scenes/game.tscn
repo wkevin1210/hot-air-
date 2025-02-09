@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr6xr07am0n4f"]
+[gd_scene load_steps=20 format=3 uid="uid://cr6xr07am0n4f"]
 
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Scenes/Clouds.tscn" id="7_abudy"]
 [ext_resource type="Script" path="res://Scripts/cam_root.gd" id="7_rw8pr"]
 [ext_resource type="Material" uid="uid://cl3n6wr8h6hsg" path="res://Textures/Arrow_Mat.tres" id="10_4js1u"]
-[ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Wind.wav" id="10_o0aen"]
+[ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Sounds/Wind.wav" id="10_o0aen"]
 [ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="12_b7eir"]
 [ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="12_fn4y5"]
+[ext_resource type="AudioStream" uid="uid://bgqgy5h8pmoos" path="res://Resources/Popping.tres" id="14_pewfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -98,7 +99,7 @@ surface_material_override/0 = ExtResource("10_4js1u")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_o0aen")
-volume_db = 7.373
+volume_db = 7.0
 pitch_scale = 1.43
 autoplay = true
 
@@ -112,9 +113,17 @@ mouse_filter = 2
 [node name="GameOverScreen" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("12_b7eir")
 
 [node name="GameOver" type="Label" parent="CanvasLayer/GameOverScreen"]
@@ -122,10 +131,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 326.5
-offset_top = 139.0
-offset_right = 785.5
-offset_bottom = 249.0
+offset_left = -243.0
+offset_top = -191.0
+offset_right = 216.0
+offset_bottom = -81.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -141,10 +150,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 326.5
-offset_top = 249.0
-offset_right = 785.5
-offset_bottom = 359.0
+offset_left = -243.0
+offset_top = -81.0
+offset_right = 216.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -162,10 +171,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 326.5
-offset_top = 329.0
-offset_right = 785.5
-offset_bottom = 439.0
+offset_left = -243.0
+offset_top = -1.0
+offset_right = 216.0
+offset_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -183,15 +192,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 442.5
-offset_top = 485.5
-offset_right = 687.5
-offset_bottom = 549.5
+offset_left = -127.0
+offset_top = 155.5
+offset_right = 118.0
+offset_bottom = 219.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_fn4y5")
 theme_override_font_sizes/font_size = 46
 text = "Back to Menu"
+
+[node name="Popping" type="AudioStreamPlayer" parent="CanvasLayer/GameOverScreen"]
+unique_name_in_owner = true
+stream = ExtResource("14_pewfs")
+volume_db = -10.0
 
 [connection signal="timeout" from="Targetted Spawner/Timer" to="Targetted Spawner" method="_on_timer_timeout"]
 [connection signal="death" from="Player" to="CamRoot" method="_on_player_death"]
