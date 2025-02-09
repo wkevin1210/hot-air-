@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cg7c41fny12xj"]
+[gd_scene load_steps=11 format=3 uid="uid://cg7c41fny12xj"]
 
 [ext_resource type="ArrayMesh" uid="uid://c1feietmdtoi5" path="res://Models/Balloon.obj" id="1_hqq88"]
 [ext_resource type="Script" path="res://Scripts/balloon.gd" id="2_8ga81"]
+[ext_resource type="AudioStream" uid="uid://de4otvegdsib7" path="res://506545__matrixxx__pop-02.wav" id="3_8x6tj"]
+[ext_resource type="AudioStream" uid="uid://bv8x3mm8brrwh" path="res://570459__splendidjams__simple-pop-sound-effect.wav" id="4_xoomn"]
+[ext_resource type="AudioStream" uid="uid://b766bqle5o1gm" path="res://188381_-popping-pops.wav" id="5_i7nae"]
+[ext_resource type="AudioStream" uid="uid://gafjskhump7p" path="res://188381__wubitog__3-popping-pops.wav" id="6_gmmvs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_43aq3"]
 radius = 1.47848
@@ -13,6 +17,16 @@ radius = 2.07613
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.0862745, 0.552941, 0.0745098, 0.894118)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t4127"]
+playback_mode = 1
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("3_8x6tj")
+stream_1/stream = ExtResource("4_xoomn")
+stream_2/stream = ExtResource("5_i7nae")
+stream_3/stream = ExtResource("6_gmmvs")
 
 [node name="Balloon" type="RigidBody3D" node_paths=PackedStringArray("balloon") groups=["Balloon"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2685, 0)
@@ -42,4 +56,11 @@ transform = Transform3D(1.535, 0, 0, 0, 1.535, 0, 0, 0, 1.535, 0, 0.0534716, 0)
 mesh = ExtResource("1_hqq88")
 surface_material_override/0 = SubResource("StandardMaterial3D_ppmkm")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_t4127")
+unit_size = 100.0
+max_distance = 1000.0
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

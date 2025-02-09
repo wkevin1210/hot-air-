@@ -90,5 +90,5 @@ var point = 0
 
 func add_point():
 	point += 1
-	if %Timer.wait_time > .2:
+	if %Timer.wait_time > .01:
 		%Timer.wait_time = %Timer.wait_time - .05
