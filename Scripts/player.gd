@@ -17,7 +17,6 @@ var yaw_input = 0.0
 @export var hp = 3
 var points = 0
 signal score_change(int)
-signal health_change(int)
 signal speed_change(float)
 
 func get_input(delta):
@@ -85,7 +84,7 @@ func _physics_process(delta: float) -> void:
 func damage():
 	if hp > 0:
 		hp -= 1
-		health_change.emit(hp)
+		health_change()
 		if hp <= 0:
 			call_deferred("destroy")
 
@@ -98,3 +97,15 @@ func add_point():
 	if %Timer.wait_time > .02:
 		%Timer.wait_time = %Timer.wait_time - .02
 		print(%Timer.wait_time)
+
+func health_change():
+	if hp == 2:
+		%right._startColor = Color(0.871, 0.851, 0)
+		%right._endColor = Color(0.871, 0.851, 0, 0)
+		%left._startColor = Color(0.871, 0.851, 0)
+		%left._endColor = Color(0.871, 0.851, 0, 0)
+	if hp == 1: 
+		%right._startColor = Color(0.784, 0, 0)
+		%right._endColor = Color(0.784, 0, 0, 0)
+		%left._startColor = Color(0.784, 0, 0)
+		%left._endColor = Color(0.784, 0, 0, 0)

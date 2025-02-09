@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://p43bd6gic80b"]
+[gd_scene load_steps=6 format=3 uid="uid://p43bd6gic80b"]
 
 [ext_resource type="Script" path="res://Scripts/Hud.gd" id="1_88xlq"]
 [ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="2_2gxn0"]
-[ext_resource type="Texture2D" uid="uid://37d6xdmgw878" path="res://Textures/Star copy.png" id="2_xpp0p"]
-[ext_resource type="Texture2D" uid="uid://dms6kouljy3xb" path="res://Textures/Star.png" id="3_71dj5"]
-[ext_resource type="Texture2D" uid="uid://dd1ertt2luqxd" path="res://Textures/Star copy 2.png" id="5_jv0j0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jd1y"]
 bg_color = Color(0.229081, 0.231112, 0.228084, 0.313726)
@@ -16,7 +13,7 @@ bg_color = Color(0.501018, 0.0335687, 0.184303, 1)
 font = ExtResource("2_2gxn0")
 font_size = 22
 
-[node name="Control" type="Control" node_paths=PackedStringArray("speed_bar", "health")]
+[node name="Control" type="Control" node_paths=PackedStringArray("speed_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,9 +22,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_88xlq")
 speed_bar = NodePath("ProgressBar")
-health = NodePath("Health")
-hp_2 = ExtResource("2_xpp0p")
-hp_1 = ExtResource("3_71dj5")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 1
@@ -65,12 +59,3 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Speed"
 label_settings = SubResource("LabelSettings_xfe0x")
-
-[node name="Health" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 75.0
-offset_bottom = 75.0
-texture = ExtResource("5_jv0j0")
-expand_mode = 1

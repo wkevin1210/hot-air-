@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Scenes/Clouds.tscn" id="7_abudy"]
 [ext_resource type="Script" path="res://Scripts/cam_root.gd" id="7_rw8pr"]
 [ext_resource type="Material" uid="uid://cl3n6wr8h6hsg" path="res://Textures/Arrow_Mat.tres" id="10_4js1u"]
-[ext_resource type="AudioStream" uid="uid://cnrb0au6ivkxj" path="res://Sounds/cold-wind-sound-effect-127448.wav" id="10_w3ls0"]
+[ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Wind.wav" id="10_o0aen"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -95,7 +95,7 @@ mesh = SubResource("CylinderMesh_gndw7")
 surface_material_override/0 = ExtResource("10_4js1u")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_w3ls0")
+stream = ExtResource("10_o0aen")
 volume_db = 7.373
 pitch_scale = 1.43
 autoplay = true

@@ -41,16 +41,22 @@ volume_db = -33.967
 unit_size = 50.0
 autoplay = true
 
-[node name="Trail3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58378, 0, -0.132762)
+[node name="right" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.375, 0, 0.12)
 material_override = SubResource("StandardMaterial3D_mhabn")
 script = ExtResource("4_sqimd")
-_fromWidth = 0.01
-_lifespan = 0.25
+_fromWidth = 0.1
+_lifespan = 0.5
+_startColor = Color(0, 0.784314, 0, 1)
+_endColor = Color(0, 0.784314, 0, 0)
 
-[node name="Trail3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58927, 0, -0.126475)
+[node name="left" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.375, 0, 0.12)
 material_override = SubResource("StandardMaterial3D_mhabn")
 script = ExtResource("4_sqimd")
-_fromWidth = 0.01
-_lifespan = 0.25
+_fromWidth = 0.1
+_lifespan = 0.5
+_startColor = Color(0, 0.784314, 0, 1)
+_endColor = Color(0, 0.784314, 0, 0)

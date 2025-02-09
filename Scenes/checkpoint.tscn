@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://br53goriq0rx8"]
+[gd_scene load_steps=6 format=3 uid="uid://br53goriq0rx8"]
 
 [ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_x6q72"]
+[ext_resource type="AudioStream" uid="uid://div5ydlo21ut" path="res://Sounds/CheckPoint.wav" id="2_3nk3o"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_oe76b"]
 inner_radius = 1.302
@@ -28,4 +29,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lii1o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_wuotu")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_3nk3o")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
