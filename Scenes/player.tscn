@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cio6v25pe4cn7"]
+[gd_scene load_steps=8 format=3 uid="uid://cio6v25pe4cn7"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_bwwpn"]
 [ext_resource type="PackedScene" uid="uid://bnlmq3lqenbtw" path="res://Scenes/Plane.tscn" id="2_tj7c7"]
+[ext_resource type="AudioStream" uid="uid://cla45mersvkai" path="res://Sounds/propeller.wav" id="3_1k56s"]
+[ext_resource type="Script" path="res://Textures/Trail3D.gd" id="4_sqimd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nobst"]
 size = Vector3(0.538769, 0.278442, 3.99017)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0nji"]
 size = Vector3(0.747253, 0.0384979, 5.14319)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhabn"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 5
@@ -24,3 +33,24 @@ shape = SubResource("BoxShape3D_l0nji")
 
 [node name="Plane" parent="." instance=ExtResource("2_tj7c7")]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.583756, 0)
+
+[node name="propeller" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_1k56s")
+volume_db = -33.967
+unit_size = 50.0
+autoplay = true
+
+[node name="Trail3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58378, 0, -0.132762)
+material_override = SubResource("StandardMaterial3D_mhabn")
+script = ExtResource("4_sqimd")
+_fromWidth = 0.01
+_lifespan = 0.25
+
+[node name="Trail3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58927, 0, -0.126475)
+material_override = SubResource("StandardMaterial3D_mhabn")
+script = ExtResource("4_sqimd")
+_fromWidth = 0.01
+_lifespan = 0.25

@@ -8,18 +8,25 @@ extends CharacterBody3D
 @export var yaw_speed = 1.0
 @export var input_response = 5.0
 
-
 @export var forward_speed = 5.0
 var pitch_input = 0.0
 var roll_input = 0.0
 var yaw_input = 0.0
 
+#Player stats / Hud Info & signals
+@export var hp = 3
+var points = 0
+signal score_change(int)
+signal health_change(int)
+signal speed_change(float)
 
 func get_input(delta):
 	if Input.is_action_pressed("throttle_up"):
 		forward_speed = lerp(forward_speed, max_speed, accel * delta)
+		speed_change.emit(forward_speed)
 	if Input.is_action_pressed("throttle_down"):
 		forward_speed = lerp(forward_speed, min_speed, accel * delta)
+		speed_change.emit(forward_speed)
 	pitch_input = lerp(pitch_input,
 		Input.get_action_strength("pitch_up") - Input.get_action_strength("pitch_down"),
 		input_response * delta)
@@ -75,20 +82,19 @@ func _physics_process(delta: float) -> void:
 	velocity = -transform.basis.z * forward_speed
 	move_and_collide(velocity * delta)
 
-@export var hp = 3
-
 func damage():
 	if hp > 0:
 		hp -= 1
+		health_change.emit(hp)
 		if hp <= 0:
 			call_deferred("destroy")
 
 func destroy():
 	get_tree().reload_current_scene()
 
-var point = 0
-
 func add_point():
-	point += 1
-	if %Timer.wait_time > .01:
-		%Timer.wait_time = %Timer.wait_time - .05
+	points += 1
+	score_change.emit(points)
+	if %Timer.wait_time > .02:
+		%Timer.wait_time = %Timer.wait_time - .02
+		print(%Timer.wait_time)
