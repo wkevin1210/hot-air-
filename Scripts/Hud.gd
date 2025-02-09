@@ -10,3 +10,8 @@ func _ready() -> void:
 	
 func speed_change(speed):
 	speed_bar.value = speed
+
+
+
+func _on_player_death() -> void:
+	visible = false

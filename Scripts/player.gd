@@ -14,8 +14,8 @@ var roll_input = 0.0
 var yaw_input = 0.0
 
 #Player stats / Hud Info & signals
-@export var hp = 3
-var points = 0
+@export var hp = 1
+@export var points = 0
 signal score_change(int)
 signal speed_change(float)
 
@@ -88,8 +88,13 @@ func damage():
 		if hp <= 0:
 			call_deferred("destroy")
 
+signal death
 func destroy():
-	get_tree().reload_current_scene()
+	emit_signal("death")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+	visible = false
+
 
 func add_point():
 	points += 1

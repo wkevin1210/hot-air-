@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cr6xr07am0n4f"]
+[gd_scene load_steps=19 format=3 uid="uid://cr6xr07am0n4f"]
 
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Scripts/cam_root.gd" id="7_rw8pr"]
 [ext_resource type="Material" uid="uid://cl3n6wr8h6hsg" path="res://Textures/Arrow_Mat.tres" id="10_4js1u"]
 [ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Wind.wav" id="10_o0aen"]
+[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="12_b7eir"]
+[ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="12_fn4y5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -101,10 +103,99 @@ pitch_scale = 1.43
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 0
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("2_xw8j2")]
 mouse_filter = 2
 
+[node name="GameOverScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_b7eir")
+
+[node name="GameOver" type="Label" parent="CanvasLayer/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 326.5
+offset_top = 139.0
+offset_right = 785.5
+offset_bottom = 249.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("12_fn4y5")
+theme_override_font_sizes/font_size = 91
+text = "GAME OVER"
+
+[node name="HighScore" type="Label" parent="CanvasLayer/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 326.5
+offset_top = 249.0
+offset_right = 785.5
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("12_fn4y5")
+theme_override_font_sizes/font_size = 51
+text = "High Score:"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="CanvasLayer/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 326.5
+offset_top = 329.0
+offset_right = 785.5
+offset_bottom = 439.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("12_fn4y5")
+theme_override_font_sizes/font_size = 51
+text = "Score:"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CanvasLayer/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 442.5
+offset_top = 485.5
+offset_right = 687.5
+offset_bottom = 549.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_fn4y5")
+theme_override_font_sizes/font_size = 46
+text = "Back to Menu"
+
 [connection signal="timeout" from="Targetted Spawner/Timer" to="Targetted Spawner" method="_on_timer_timeout"]
+[connection signal="death" from="Player" to="CamRoot" method="_on_player_death"]
+[connection signal="death" from="Player" to="CanvasLayer/Control" method="_on_player_death"]
+[connection signal="death" from="Player" to="CanvasLayer/GameOverScreen" method="_on_player_death"]
 [connection signal="collected" from="Checkpoint" to="." method="_on_checkpoint_collected"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/BackButton" to="CanvasLayer/GameOverScreen" method="_on_back_button_pressed"]

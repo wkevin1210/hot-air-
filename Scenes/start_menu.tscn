@@ -56,7 +56,6 @@ script = ExtResource("3_1rkno")
 balloon = ExtResource("4_5uqoc")
 
 [node name="Timer" type="Timer" parent="WorldEnvironment/BalloonMenu"]
-wait_time = 2.0
 autostart = true
 
 [node name="Title" type="Label" parent="."]

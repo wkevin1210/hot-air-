@@ -10,3 +10,7 @@ func _physics_process(delta: float) -> void:
 			deg_to_rad(%Player.rotation_degrees.x), cam_speed*delta))
 	rotation_degrees.z = rad_to_deg(lerp_angle(deg_to_rad(rotation_degrees.z),
 			deg_to_rad(%Player.rotation_degrees.z), cam_speed*delta))
+
+
+func _on_player_death() -> void:
+	visible = false
