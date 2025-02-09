@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cr6xr07am0n4f"]
+[gd_scene load_steps=14 format=3 uid="uid://cr6xr07am0n4f"]
 
 [ext_resource type="PackedScene" uid="uid://cio6v25pe4cn7" path="res://Scenes/player.tscn" id="1_ig83k"]
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_wr1w7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="3_8hhod"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="5_33y6m"]
 [ext_resource type="PackedScene" uid="uid://dm4n0p5x2asht" path="res://Scenes/Clouds.tscn" id="7_abudy"]
+[ext_resource type="Script" path="res://Scenes/cam_root.gd" id="7_rw8pr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b8yhy"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -59,26 +60,29 @@ transform = Transform3D(-0.107166, -0.65896, 0.744505, 0, 0.748817, 0.662777, -0
 [node name="Player" parent="." instance=ExtResource("1_ig83k")]
 unique_name_in_owner = true
 
-[node name="PlayerCam" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.93476, 7.8874)
-
-[node name="Arrow" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85926, 2.30622)
-script = ExtResource("3_8hhod")
-
-[node name="DirectionArrow" type="MeshInstance3D" parent="Player/Arrow"]
-transform = Transform3D(0.405315, 0, 0, 0, -3.39252e-08, 0.122083, 0, -0.776118, -5.33642e-09, 0, 0, 0)
-rotation_order = 0
-transparency = 0.5
-mesh = SubResource("PrismMesh_xfy1m")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_s5hcj")
-
 [node name="Checkpoint" parent="." groups=["Checkpoints"] instance=ExtResource("2_e4fhv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0894365, 0.0670133, -19.3135)
 
 [node name="Node3D" parent="." instance=ExtResource("7_abudy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -62.8854, 0)
+
+[node name="CamRoot" type="Node3D" parent="."]
+script = ExtResource("7_rw8pr")
+
+[node name="PlayerCam" type="Camera3D" parent="CamRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
+
+[node name="Arrow" type="Node3D" parent="CamRoot/PlayerCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85926, -5.69378)
+script = ExtResource("3_8hhod")
+
+[node name="DirectionArrow" type="MeshInstance3D" parent="CamRoot/PlayerCam/Arrow"]
+transform = Transform3D(0.405315, 0, 0, 0, -3.39252e-08, 0.122083, 0, -0.776118, -5.33642e-09, 0, 0, 0)
+rotation_order = 0
+transparency = 0.5
+mesh = SubResource("PrismMesh_xfy1m")
+skeleton = NodePath("../../../../Player")
+surface_material_override/0 = SubResource("StandardMaterial3D_s5hcj")
 
 [connection signal="timeout" from="Targetted Spawner/Timer" to="Targetted Spawner" method="_on_timer_timeout"]
 [connection signal="collected" from="Checkpoint" to="." method="_on_checkpoint_collected"]
