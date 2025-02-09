@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://7kk84aj4unwq"]
+[gd_scene load_steps=10 format=3 uid="uid://7kk84aj4unwq"]
 
 [ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_8by1o"]
 [ext_resource type="PackedScene" uid="uid://drpbwsyj2i16e" path="res://Scenes/Cloud.tscn" id="2_brptw"]
 [ext_resource type="FontFile" uid="uid://dulfovq380ecv" path="res://KingsmanDemo-1GVgg.ttf" id="2_xolj7"]
 [ext_resource type="Script" path="res://Scripts/balloon_menu.gd" id="3_1rkno"]
 [ext_resource type="PackedScene" uid="uid://cg7c41fny12xj" path="res://Scenes/Balloon.tscn" id="4_5uqoc"]
+[ext_resource type="AudioStream" uid="uid://c78tqlepyc3ha" path="res://Wind.wav" id="6_85hbi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxmub"]
 sky_top_color = Color(0.173839, 0.47887, 0.654901, 1)
@@ -139,6 +140,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xolj7")
 theme_override_font_sizes/font_size = 46
 text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_85hbi")
+volume_db = -20.0
+pitch_scale = 1.43
+autoplay = true
 
 [connection signal="timeout" from="WorldEnvironment/BalloonMenu/Timer" to="WorldEnvironment/BalloonMenu" method="_on_timer_timeout"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
