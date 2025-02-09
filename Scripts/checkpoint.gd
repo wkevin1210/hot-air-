@@ -18,7 +18,7 @@ func spawn():
 		offsets.append(f)
 	
 	global_position.x = player.global_position.x + offsets[0]
-	global_position.y = player.global_position.y + offsets[1]
+	global_position.y = randf_range(-60.0, 40.0)
 	global_position.z = player.global_position.z + offsets[2]
 	
 signal collected

@@ -8,7 +8,6 @@ outer_radius = 1.728
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lii1o"]
 transparency = 1
-shading_mode = 0
 albedo_color = Color(0.729412, 0.737255, 0.0666667, 0.776471)
 refraction_scale = -1.0
 proximity_fade_distance = 0.01
